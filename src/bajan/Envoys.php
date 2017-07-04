@@ -1,23 +1,15 @@
 <?php
 
-namespace Bajan\Envoys;
+namespace bajan\Envoys;
 
 use pocketmine\plugin\PluginBase;
-use pocketmine\block\Chest;
-use pocketmine\level\Level;
 
 class Envoys extends PluginBase{
-
-public $location = [];
-public $ramdomX = mt_rand(-140, 208);
-public $ramdomY = mt_rand(-140, 208);
 
     public function onEnable(){
         $this->getLogger()->info("Envoys has been enabled!");
     }
-         public function randomChest(Level $level){
-              $chest = Block::get(Block::CHEST);
-         }
+
     public function onDisable(){
         $this->getLogger()->info("Envoys has been disabled!");
     }
