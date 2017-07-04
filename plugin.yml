@@ -1,7 +1,5 @@
 name: Envoys
-Authors:
-- CrazierDevotee0
--
-main: CrazierDevotee0\Envoys\Envoys 
+main: bajan\Envoys
+api: [2.0.0, 3.0.0, 3.0.0-ALPHA4, 3.0.0-ALPHA5, 3.0.0-ALPHA6]
 version: 1.0.0
-api: 2.0.0
+author: Bajan
