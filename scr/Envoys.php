@@ -1,6 +1,6 @@
 <?php
 
-namespace CrazierDevotee0\Envoys;
+namespace Bajan\Envoys;
 
 use pocketmine\plugin\PluginBase;
 
