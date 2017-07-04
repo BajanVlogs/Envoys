@@ -3,6 +3,8 @@
 namespace Bajan\Envoys;
 
 use pocketmine\plugin\PluginBase;
+use pocketmine\block\Chest;
+use pocketmine\level\Level;
 
 class Envoys extends PluginBase{
 
