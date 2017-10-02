@@ -14,3 +14,4 @@ thanks for support my plugin and have a great day
 
 
 https://poggit.pmmp.io/ci/BajanVlogs/Envoys/Envoys
+GET LATEST BUILD HERE
