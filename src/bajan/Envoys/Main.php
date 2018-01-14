@@ -21,6 +21,9 @@ class Main extends PluginBase implements Listener{
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->items = (new Config($this->getDataFolder() ."resources\Items.yml", Config::YAML))->getAll();
 		$this->getServer()->getScheduler()->scheduleRepeatingTask(new EnvoyTask($this), $this->spawntime*60*20);
+		$this->saveResource("Config.yml");
+                $this->saveResource("Enovys.yml");
+                $this->saveResource("Items.yml");
 	}
 
 	public function runEnvoyEvent(){
