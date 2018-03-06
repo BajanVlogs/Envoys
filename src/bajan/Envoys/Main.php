@@ -13,6 +13,7 @@ use pocketmine\item\Item;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\math\Vector3;
 use pocketmine\nbt\NBT;
+use pocketmine\nbt\tag\CompoundTag;
 use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
@@ -61,6 +62,7 @@ class Main extends PluginBase implements Listener{
 		$values = explode(":", $item);
 		$level = $sender->getLevel();
 		$level->setBlock($sender->getPosition()->asVector3(), Block::get(54));
+		$nbt = new CompoundTag(" ", [
 			new ListTag("Items", []),
 			new StringTag("id", Tile::CHEST),
 			new IntTag("x", $sender->x),
