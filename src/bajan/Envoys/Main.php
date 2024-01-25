@@ -12,22 +12,22 @@ use pocketmine\block\Block;
 use pocketmine\item\Item;
 use pocketmine\utils\TextFormat as TF;
 use pocketmine\math\Vector3;
-use pocketmine\nbt\NBT;
 use pocketmine\nbt\tag\CompoundTag;
-use pocketmine\nbt\tag\IntTag;
 use pocketmine\nbt\tag\ListTag;
 use pocketmine\nbt\tag\StringTag;
 use pocketmine\tile\Tile;
 use pocketmine\level\particle\PortalParticle;
-use pocketmine\level\particle\FireworksParticle;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
 use PiggyCustomEnchants\Main as PiggyCustomEnchants;
 
 class Main extends PluginBase implements Listener {
 
-    //minutes
+    // minutes
     public $spawntime = 5;
+    private $cfg;
+    private $envoys;
+    private $items;
 
     public function onEnable() {
         $this->getServer()->getPluginManager()->registerEvents($this, $this);
@@ -155,4 +155,3 @@ class Main extends PluginBase implements Listener {
         return false;
     }
 }
-
