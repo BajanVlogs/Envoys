@@ -22,6 +22,7 @@ use pocketmine\level\particle\PortalParticle;
 use pocketmine\level\particle\FireworksParticle;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
 use pocketmine\network\mcpe\protocol\SpawnParticleEffectPacket;
+use PiggyCustomEnchants\Main as PiggyCustomEnchants;
 
 class Main extends PluginBase implements Listener {
 
@@ -38,6 +39,14 @@ class Main extends PluginBase implements Listener {
         $this->cfg = new Config($this->getDataFolder() . "Config.yml", Config::YAML);
         $this->envoys = new Config($this->getDataFolder() . "Envoys.yml", Config::YAML);
         $this->items = new Config($this->getDataFolder() . "Items.yml", Config::YAML);
+
+        // Check if PiggyCustomEnchants is loaded
+        $piggyCustomEnchants = $this->getServer()->getPluginManager()->getPlugin("PiggyCustomEnchants");
+        if ($piggyCustomEnchants instanceof PiggyCustomEnchants) {
+            $this->getLogger()->info("PiggyCustomEnchants found. Enabling support...");
+        } else {
+            $this->getLogger()->warning("PiggyCustomEnchants not found. Some features may not work.");
+        }
     }
 
     public function runEnvoyEvent() {
@@ -46,9 +55,32 @@ class Main extends PluginBase implements Listener {
             $player->sendMessage(TF::GREEN . "Envoys are being spawned in the warzone!");
         }
 
+        // Define the zones where envoys can spawn
+        $zone1 = [
+            'minX' => 100,
+            'maxX' => 200,
+            'minZ' => 100,
+            'maxZ' => 200
+        ];
+
+        $zone2 = [
+            'minX' => -200,
+            'maxX' => -100,
+            'minZ' => -200,
+            'maxZ' => -100
+        ];
+
         foreach ($this->envoys as $data => $level) {
-            $data = explode(":", $data);
-            $tile = $this->getServer()->getLevelByName($level)->getTile(new Vector3(intval($data[0]), intval($data[1]), intval($data[2])));
+            // Randomly select a zone
+            $zone = mt_rand(1, 2) === 1 ? $zone1 : $zone2;
+
+            // Generate random coordinates within the selected zone
+            $x = mt_rand($zone['minX'], $zone['maxX']);
+            $z = mt_rand($zone['minZ'], $zone['maxZ']);
+
+            // Spawn envoy at the selected location
+            $tile = $this->getServer()->getLevelByName($level)->getTile(new Vector3($x, $this->getServer()->getDefaultLevel()->getHighestBlockAt($x, $z), $z));
+
             $i = rand(3, 5);
 
             while ($i > 0) {
@@ -75,26 +107,32 @@ class Main extends PluginBase implements Listener {
         $pk->position = $position;
         $pk->data = 0; // Firework data
         $level->broadcastPacketToViewers($position, $pk);
-        
+
         // Play sound and light flash
         $level->addLevelEvent($position, LevelEventPacket::EVENT_SOUND_ANVIL_USE);
         $level->addLevelEvent($position, LevelEventPacket::EVENT_SOUND_ORB);
     }
 
     public function setEnvoy(Player $sender) {
-        $this->envoys->set($sender->x . ":" . $sender->y . ":" . $sender->z, $sender->getLevel()->getName());
-        $this->envoys->save();
         $items = $this->items->get("Items");
         $item = $items[array_rand($items)];
         $values = explode(":", $item);
+
+        // Randomly select a zone
+        $zone = mt_rand(1, 2) === 1 ? $zone1 : $zone2;
+
+        // Generate random coordinates within the selected zone
+        $x = mt_rand($zone['minX'], $zone['maxX']);
+        $z = mt_rand($zone['minZ'], $zone['maxZ']);
+
         $level = $sender->getLevel();
         $level->setBlock($sender->getPosition()->asVector3(), Block::get(Block::ENDER_CHEST));
         $nbt = new CompoundTag(" ", [
             new ListTag("Items", []),
             new StringTag("id", Tile::END_CHEST),
-            new IntTag("x", $sender->x),
-            new IntTag("y", $sender->y),
-            new IntTag("z", $sender->z)
+            new IntTag("x", $x),
+            new IntTag("y", $this->getServer()->getDefaultLevel()->getHighestBlockAt($x, $z)),
+            new IntTag("z", $z)
         ]);
         $enderChest = Tile::createTile("EnderChest", $sender->getLevel(), $nbt);
         $level->addTile($enderChest);
@@ -117,3 +155,4 @@ class Main extends PluginBase implements Listener {
         return false;
     }
 }
+
