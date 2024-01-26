@@ -30,7 +30,7 @@ class Main extends PluginBase implements Listener {
     private $items;
 
     public function onEnable() {
-        $this->getServer()->getPluginManager()->registerEvents($this, $this);
+         $this->getServer()->getPluginManager()->registerEvents($this, $this);
         $this->getServer()->getScheduler()->scheduleRepeatingTask(new EnvoyTask($this), $this->spawntime * 60 * 20);
         @mkdir($this->getDataFolder());
         $this->saveResource("Config.yml");
