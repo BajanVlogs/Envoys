@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace bajan\envoys\particle;
+namespace bajan\Envoys\particle;
 
 use pocketmine\math\Vector3;
 use pocketmine\network\mcpe\protocol\LevelEventPacket;
