@@ -12,7 +12,7 @@ use pocketmine\item\StringToItemParser;
 use pocketmine\item\enchantment\StringToEnchantmentParser;
 use pocketmine\item\enchantment\EnchantmentInstance;
 use pocketmine\utils\SingletonTrait;
-use bajan\envoys\Envoys;
+use bajan\Envoys\Envoys;
 
 class RewardManager
 {
