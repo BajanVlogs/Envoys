@@ -12,8 +12,8 @@ use pocketmine\scheduler\ClosureTask;
 use pocketmine\world\World;
 use pocketmine\world\Position;
 use pocketmine\utils\TextFormat;
-use bajan\envoys\utils\RewardManager;
-use bajan\envoys\Envoys;
+use bajan\Envoys\utils\RewardManager;
+use bajan\Envoys\Envoys;
 
 class EnvoyManager {
 
