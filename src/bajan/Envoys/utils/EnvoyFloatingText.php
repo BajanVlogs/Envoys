@@ -6,7 +6,7 @@ namespace bajan\Envoys\utils;
 
 use pocketmine\world\particle\FloatingTextParticle;
 use pocketmine\world\particle\HugeExplodeParticle;
-use wavycraft\envoys\particle\WindExplosionParticle;
+use bajan\Envoys\particle\WindExplosionParticle;
 use pocketmine\world\Position;
 use pocketmine\math\Vector3;
 use pocketmine\utils\TextFormat;
