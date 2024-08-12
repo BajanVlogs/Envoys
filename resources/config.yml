@@ -1,0 +1,15 @@
+envoy-spawn-interval: 60
+
+despawn-timer: 20
+
+min_envoy: 1
+max_envoy: 10
+
+envoy-spawn-locations:
+  TEST:
+    x-min: 0
+    x-max: 10
+    y-min: 4
+    y-max: 4
+    z-min: 0
+    z-max: 10
