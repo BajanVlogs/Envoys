@@ -2,4 +2,4 @@ name: Envoys
 version: 3.0.0
 author: BajanVlogs
 api: 5.0.0
-main: bajan\envoys\Envoys
+main: bajan\Envoys\Envoys
