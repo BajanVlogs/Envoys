@@ -1,25 +1,23 @@
 # Envoys
-Chests spawn randomly in the warzone.
+### Description
+The Most OG Envoy Plugin On Bedrock Edition
+designed for RebirthNetwork, Use at own risk
 
-## Features
-- Random spawn locations for envoy chests.
-- Use `/setenvoy` to set up an envoy chest.
-- Replace the chest once they are done.
+### Features
+- [x] Automatic Envoy spawning/despawning
+- [x] Easy handling rewards
+- [x] Floating text with a timer counting down till despawm
+- [x] Broadcasting a message starting from 1 hr to 0s indicating Envoys are going to spawn
+- [x] Cool claiming animation/effects when Envoys are idle
+- [ ] Customizable messages
 
-## Important Note
-When setting positions in the Envoys.yml, if it's in the format `175.1931:65.819:93.9181`, change it to `175:65:93` for proper functionality. You can also use `/tp ~ ~ ~` after setting the envoy chest.
+### Want to see this plugin action?
 
-## Particle Effects
-Particle effects have been added to enhance the envoy experience.
+Join my server to get a peak of its functionality!
 
-## PiggyCustomEnchants Integration
-PiggyCustomEnchants support has been added to introduce custom enchantments.
+IP: RebirthBE.com
 
-## How to Use
-1. Place envoy chests in the warzone.
-2. Run `/setenvoy` to set up an envoy chest at your location.
-3. Replace the chest once the envoy event is over.
-
+PORT: 19132
 ## Latest Build
 [Get the latest build here](https://poggit.pmmp.io/ci/BajanVlogs/Envoys/Envoys)
 
