@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace bajan\envoys\utils;
+namespace bajan\Envoys\utils;
 
 use pocketmine\world\particle\FloatingTextParticle;
 use pocketmine\world\particle\HugeExplodeParticle;
